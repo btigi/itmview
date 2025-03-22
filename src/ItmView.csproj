@@ -45,5 +45,12 @@
         <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.0.5" />
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.0" />
         <PackageReference Include="ii.InfinityEngine" Version="0.6.0-alpha.1" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.3" />
+    </ItemGroup>
+  
+    <ItemGroup>
+      <None Update="appsettings.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 </Project>

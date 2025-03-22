@@ -1,26 +1,22 @@
 using Avalonia.Controls;
 using ii.InfinityEngine.Readers;
 using ItmView.ViewModels;
+using Microsoft.Extensions.Configuration;
 
 namespace ItmView.Views;
 
 public partial class MainWindow : Window
 {
-    private readonly MainViewModel _mainViewModel = new MainViewModel();
+    private readonly MainViewModel _mainViewModel = new();
 
-    public MainWindow()
-    {
-        InitializeComponent();
-        this.DataContext = _mainViewModel;
-    }
-
-    public MainWindow(string filePath)
+    public MainWindow(IConfiguration _configuration, string filePath)
     {
         InitializeComponent();
         this.DataContext = _mainViewModel;
 
+        var tlkPath = _configuration["DialogTlkPath"];
         var tlkReader = new TlkFileBinaryReader();
-        var tlk = tlkReader.Read(@"D:\Games\IE\bg2ee-pristine\dialog.tlk");
+        var tlk = tlkReader.Read(tlkPath);
 
         var reader = new ItmFileBinaryReader();
         reader.TlkFile = tlk;

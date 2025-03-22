@@ -7,11 +7,21 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Security.Principal;
+using Microsoft.Extensions.Configuration;
 
 namespace ItmView;
 
 public partial class App : Application
 {
+    private readonly IConfiguration _configuration;
+
+    public App()
+    {
+        _configuration = new ConfigurationBuilder()
+            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+            .Build();
+    }
+
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
@@ -47,7 +57,7 @@ public partial class App : Application
                 }
                 else if (File.Exists(args[0]))
                 {
-                    desktop.MainWindow = new MainWindow(args[0]);
+                    desktop.MainWindow = new MainWindow(_configuration, args[0]);
                     exit = false;
                 }
             }
