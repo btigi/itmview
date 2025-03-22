@@ -1,0 +1,49 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <!--<OutputType>WinExe</OutputType>-->
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+        <ApplicationManifest>app.manifest</ApplicationManifest>
+        <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+
+      <OutputType>WinExe</OutputType>
+      <!--<PublishTrimmed>true</PublishTrimmed>-->
+      <!--<PublishSingleFile>true</PublishSingleFile>-->
+      <SelfContained>true</SelfContained>
+      <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+      <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+
+      <PublishAot>true</PublishAot>
+      <!-- Recommended Avalonia trimming settings for Native AOT -->
+      <BuiltInComInteropSupport>false</BuiltInComInteropSupport>
+      <TrimMode>link</TrimMode>
+
+    </PropertyGroup>
+
+    <ItemGroup>
+        <AvaloniaResource Include="Assets\**" />
+        <AvaloniaResource Include="Assets\app.ico" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="README.adoc" />
+    </ItemGroup>
+
+  <ItemGroup>
+    <!-- Preserve Avalonia types for reflection -->
+    <TrimmerRootAssembly Include="Avalonia.Themes.Fluent" />
+    <!--<TrimmerRootAssembly Include="Avalonia.Themes.Default" />-->
+  </ItemGroup>
+  
+    <ItemGroup>
+        <PackageReference Include="Avalonia" Version="11.0.5" />
+        <PackageReference Include="Avalonia.Desktop" Version="11.0.5" />
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.5" />
+        <PackageReference Include="Avalonia.Fonts.Inter" Version="11.0.5" />
+        <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
+        <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.0.5" />
+        <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.0" />
+        <PackageReference Include="ii.InfinityEngine" Version="0.6.0-alpha.1" />
+    </ItemGroup>
+</Project>
