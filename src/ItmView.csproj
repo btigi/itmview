@@ -25,11 +25,6 @@
         <AvaloniaResource Include="Assets\**" />
         <AvaloniaResource Include="Assets\app.ico" />
     </ItemGroup>
-
-    <ItemGroup>
-      <None Remove="README.adoc" />
-    </ItemGroup>
-
   <ItemGroup>
     <!-- Preserve Avalonia types for reflection -->
     <TrimmerRootAssembly Include="Avalonia.Themes.Fluent" />
