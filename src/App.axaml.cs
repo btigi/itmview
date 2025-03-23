@@ -51,7 +51,7 @@ public partial class App : Application
                         Registry.SetValue(@"HKEY_CLASSES_ROOT\.itm", "", "IEAppFile");
 
                         Registry.SetValue(@"HKEY_CLASSES_ROOT\IEAppFile", "", "Infinity Engine ITM file");
-                        Registry.SetValue(@"HKEY_CLASSES_ROOT\IEAppFile\DefaultIcon", "", $"{appPath},0");
+                        Registry.SetValue(@"HKEY_CLASSES_ROOT\IEAppFile\DefaultIcon", "", $"{Path.Combine(Path.Combine(Path.GetDirectoryName(appPath), "Assets"), "filetype.ico")},0");
                         Registry.SetValue(@"HKEY_CLASSES_ROOT\IEAppFile\shell\open\command", "", $"\"{appPath}\" \"%1\"");
                     }
                 }

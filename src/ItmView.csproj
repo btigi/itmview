@@ -23,6 +23,7 @@
 
     <ItemGroup>
         <AvaloniaResource Include="Assets\**" />
+        <AvaloniaResource Remove="Assets\filetype.ico" />
         <AvaloniaResource Include="Assets\app.ico" />
     </ItemGroup>
   <ItemGroup>
@@ -46,6 +47,9 @@
   
     <ItemGroup>
       <None Update="appsettings.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="Assets\filetype.ico">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
     </ItemGroup>

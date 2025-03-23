@@ -21,6 +21,9 @@ itmview supports pressing ESC to quit the application, in addition to the standa
 
 ![screenshot of itmview](resources/screenshot.png)
 
+
+Note: If you place an Avalonia axaml file named override.axaml in the same directory as itmview.exe then that UI will be used in preference to the default UI. The datacontext of the view is automatically set to an ITMFile (file) and a collection of extended headers (ext). This allows you to customize the UI to display particular properties you find interesting/useful rather than the default set.
+
 ## Download
 
 Compiled downloads are not available.
