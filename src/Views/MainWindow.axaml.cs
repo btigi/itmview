@@ -1,13 +1,30 @@
 using Avalonia.Controls;
+using Avalonia.Markup.Xaml;
 using ii.InfinityEngine.Readers;
 using ItmView.ViewModels;
 using Microsoft.Extensions.Configuration;
+using System.IO;
 
 namespace ItmView.Views;
 
 public partial class MainWindow : Window
 {
     private readonly MainViewModel _mainViewModel = new();
+
+    public void InitializeComponent()
+    {
+        var overridePath = "override.axaml";
+        if (File.Exists(overridePath))
+        {
+            var stream = File.ReadAllText(overridePath);
+            var xaml = AvaloniaRuntimeXamlLoader.Parse<Control>(stream);
+            this.Content = xaml;
+        }
+        else
+        {
+            AvaloniaXamlLoader.Load(this);
+        }
+    }
 
     public MainWindow(IConfiguration _configuration, string filePath)
     {
